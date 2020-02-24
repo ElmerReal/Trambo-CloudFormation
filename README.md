@@ -14,6 +14,24 @@ Los template se clasifican segun su tipo.
 El diagrama completo es el siguiente:
 ![alt text](/Imagenes/CloudFormation1.png)
 
-El archivo [principal](/principal.yml) es el encargado de mandar a llamar a los demas templates y orquestar los parametros que cada uno necesita, funciona como una especie de puente entre los demas templates.
+El archivo [principal](/principal.yml) es el encargado de mandar a llamar a los demas templates y orquestar los parametros que cada uno necesita, funciona como una especie de puente entre los demas templates. Este archivo esta estructurado de la siguiente manera:
+
+- Descripcion
+    Es un string que describe para que sirve el template
+- Recursos
+    Este bloque es donde se indican que recursos se van a usar o se mandan a llamar a otros templates.
+    - NetworkStack
+        ```
+        NetworkStack: 
+            Type: AWS::CloudFormation::Stack
+            Properties: 
+            TemplateURL: "https://trambo-elmer.s3-us-west-2.amazonaws.com/CloudFormation/Network/network.yml"
+        ```
+    - BDStack
+        ```
+        ```
+    - WordpressStack
+        ```
+        ```
 
 At the command prompt, type `nano`.
