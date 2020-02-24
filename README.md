@@ -8,3 +8,5 @@ Los template se clasifican segun su tipo.
 2. [Base de Datos](/BaseDatos)
 3. [Instancias](/Instancias)
 
+El diagrama completo es el siguiente:
+![alt text](/Imagenes/CloudFormation1.png)
