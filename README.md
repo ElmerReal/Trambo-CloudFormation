@@ -14,6 +14,7 @@ Los template se clasifican segun su tipo.
 El diagrama completo es el siguiente:
 ![alt text](/Imagenes/CloudFormation1.png)
 
+# principal.yml
 El archivo [principal](/principal.yml) es el encargado de mandar a llamar a los demas templates y orquestar los parametros que cada uno necesita, funciona como una especie de puente entre los demas templates. Este archivo esta estructurado de la siguiente manera:
 
 - Descripcion
@@ -46,7 +47,7 @@ El archivo [principal](/principal.yml) es el encargado de mandar a llamar a los 
 
         ```
     - WordpressStack
-    
+
         En este bloque se crea un objeto de tipo instancia, se le envia como parametro el id de la subnet publica 1 (donde estara corriendo), el security group con el puerto 80 y 22 abiertos, el endpoint del RDS y el security gruoup default de la VPC
         ```
           WordpressStack: 
@@ -59,5 +60,3 @@ El archivo [principal](/principal.yml) es el encargado de mandar a llamar a los 
                 EndpointBD: !GetAtt BDStack.Outputs.EndpointBD
                 RefDefaultSG : !GetAtt NetworkStack.Outputs.RefDefaultSG
         ```
-
-At the command prompt, type `nano`.
