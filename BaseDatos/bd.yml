@@ -1,0 +1,49 @@
+Description:  Template para base de datos.
+
+Parameters: 
+  RefSubnetsPrivadas: 
+    Description: "Subnets Privada"
+    Type: String
+  
+  RefSG: 
+    Description: "Security group"
+    Type: String
+
+  RefDefaultSG:
+    Description: "Default Security group"
+    Type: String
+
+Resources:
+  SubnetGroup:
+    Properties:
+      DBSubnetGroupDescription: description
+      SubnetIds: 
+        - !Select [ 0, !Split [ ",", !Ref RefSubnetsPrivadas ] ]
+        - !Select [ 1, !Split [ ",", !Ref RefSubnetsPrivadas ] ]
+        - !Select [ 2, !Split [ ",", !Ref RefSubnetsPrivadas ] ]
+      Tags: 
+        - Key: String
+          Value: String
+    Type: "AWS::RDS::DBSubnetGroup"
+
+  MyDB:
+    Type: 'AWS::RDS::DBInstance'
+    Properties:
+      DBInstanceIdentifier: DBPrueba1227
+      DBName: wordpress
+      DBInstanceClass: db.t2.micro
+      AvailabilityZone: "us-west-2a"
+      AllocatedStorage: 50
+      Engine: MySQL
+      EngineVersion: 8.0.16
+      MasterUsername: DBUsername
+      MasterUserPassword: DBPasswords
+      DBSubnetGroupName: !Ref SubnetGroup
+      VPCSecurityGroups: 
+        - !Ref RefSG
+        - !Ref RefDefaultSG
+
+Outputs:
+  EndpointBD:
+    Description: Endpoint RDS
+    Value: !GetAtt MyDB.Endpoint.Address

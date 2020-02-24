@@ -1,0 +1,103 @@
+MyEC2Instance: 
+    Type: AWS::EC2::Instance
+    Properties: 
+      ImageId: "ami-0b38728fd1c94b4bc"
+      KeyName: "Key"
+      BlockDeviceMappings: 
+      - DeviceName: "/dev/sdm"
+        Ebs: 
+          VolumeType: "io1"
+          Iops: "200"
+          DeleteOnTermination: "false"
+          VolumeSize: "20"
+      - DeviceName: "/dev/sdk"
+        NoDevice: {}
+      Tags:
+        - Key: Name
+          Value: Elmer
+        - Key: Owner
+          Value: elmerreal98@gmail.com 
+
+
+
+
+          MyEC2Instance: 
+    Type: AWS::EC2::Instance
+    Properties: 
+      ImageId: "ami-0b38728fd1c94b4bc"
+      KeyName: "Key"
+      BlockDeviceMappings: 
+      - DeviceName: "/dev/sdm"
+        Ebs: 
+          VolumeType: "io1"
+          Iops: "200"
+          DeleteOnTermination: "false"
+          VolumeSize: "20"
+      - DeviceName: "/dev/sdk"
+        NoDevice: {}
+      Tags:
+        - Key: Name
+          Value: Elmer
+        - Key: Owner
+          Value: elmerreal98@gmail.com 
+
+
+
+  MyEC2Instance: 
+      Type: AWS::EC2::Instance
+      Properties: 
+        ImageId: "ami-0e8c04af2729ff1bb"
+        KeyName: "Key"
+        InstanceType: t2.micro
+        BlockDeviceMappings: 
+        - DeviceName: "/dev/sdm"
+          Ebs: 
+            VolumeType: "gp2"
+            DeleteOnTermination: "true"
+            VolumeSize: "20"
+        - DeviceName: "/dev/xvda"
+          NoDevice: {}
+        Tags:
+          - Key: Name
+            Value: Elmer
+          - Key: Owner
+            Value: elmerreal98@gmail.com 
+
+Description:  Template para instancias.
+Resources:
+  MyDB:
+    Type: 'AWS::RDS::DBInstance'
+    Properties:
+      DBInstanceIdentifier: DBPrueba
+      DBName: !Ref DBName
+      DBInstanceClass: db.m5.large
+      AllocatedStorage: 50
+      Engine: MySQL
+      EngineVersion: 8.0.16
+      MasterUsername: DBUsername
+      MasterUserPassword: DBPasswords
+
+
+
+        MyEC2Instance: 
+    Type: AWS::EC2::Instance
+    Properties: s
+      ImageId: "ami-0e8c04af2729ff1bb"
+      KeyName: "Key"
+      InstanceType: t2.micro
+      AvailabilityZone: "us-west-2a"
+
+
+
+
+https://trambo-elmer.s3-us-west-2.amazonaws.com/CloudFormation/principal.yml
+ aws s3 sync . s3://trambo-elmer/CloudFormation
+
+
+
+ https://tecadmin.net/write-append-multiple-lines-to-file-linux/
+ https://techburst.io/synchronizing-aws-s3-an-overview-5eaa12934d38
+ https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-lamp-amazon-linux-2.html
+
+
+ https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/hosting-wordpress.html
