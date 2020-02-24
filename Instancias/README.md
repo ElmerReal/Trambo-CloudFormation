@@ -1,29 +1,19 @@
-First Header  | Second Header
-------------- | -------------
-Content Cell  | Content Cell
-Content Cell  | Content Cell
-
-
-# BaseDatos/bd.yml
-El archivo [bd](/BaseDatos/bd.yml) es el template que que permite crear RDS:
+# Instancias/wordpress.yml
+El archivo [wordpress](/Instancias/wordpress.yml) es el template que que permite crear EC2.
 Este archivo esta estructurado de la siguiente manera:
 
 * Descripcion
 
 * Parameters
-    * RefSubnetsPrivadas
-        * String separado por coma de los ids de las subneets privadas
+    * RefSubnetPublica
+        * String del id de la subnet publica
     * RefSG
-        * Security group que solo tiene el puerto 3306 abierto.
+        * Security group que solo tiene el puerto 80 y 22 abierto.
     * RefDefaultSG
         * Security group default de la VPC.
+    * EndpointBD
+        * Endpoint del RDS creado
 
 * Recursos
-    * SubnetGroup
-        * Crea un subnet group con los ids de las subnets recibidas como parametro.
-    * MyDB
-        * Crea la instancia del RDS
-
-* Outputs
-    * EndpointBD
-        * Devuelve el endpoint de la instancia
+    * MyEC2Instance
+        * Instancia EC2 creada con un user data que instala wordpress

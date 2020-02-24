@@ -1,17 +1,20 @@
-#RouteTable publica
+# Network/network.yml
+El archivo [network](/Network/network.yml) es el template que que crea toda la infraestructura de la VPC.
+
+# RouteTable publica
 
 Destino  | Target
 ------------- | -------------
 10.0.0.0/16  | local
 0.0.0.0/0  | Internet Gatway
 
-#RouteTable privada
+# RouteTable privada
 
 Destino  | Target
 ------------- | -------------
 10.0.0.0/16  | local
 
-#Subnets
+# Subnets
 
 CIDR  | Nombre | Tipo
 ------------- | ------------- | -------------
