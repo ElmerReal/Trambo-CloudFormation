@@ -45,7 +45,7 @@ Resources:
     Properties:
       DBInstanceIdentifier:
         !Join
-          - '_'
+          - '-'
           - - 'BD'
             - !Ref AWS::StackName
 
