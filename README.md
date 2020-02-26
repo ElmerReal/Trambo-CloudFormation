@@ -26,6 +26,7 @@ El archivo [principal](/principal.yml) es el encargado de mandar a llamar a los 
     - NetworkStack
 
             En este caso solamente se crea un objeto del template network porque solo una VPC necesitamos crear.
+            
             ```
             NetworkStack: 
                 Type: AWS::CloudFormation::Stack
@@ -35,6 +36,7 @@ El archivo [principal](/principal.yml) es el encargado de mandar a llamar a los 
     - BDStack
 
         En este bloque se crea un objeto de RDS se le pasa como parametro eun String de las subnets privadas separadas por coma, se envia el security group que solo tiene el puerto 3306 abierto y el security group default de la VPC.
+        
         ```
         BDStack: 
             Type: AWS::CloudFormation::Stack
