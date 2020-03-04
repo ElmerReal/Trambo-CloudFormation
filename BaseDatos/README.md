@@ -1,24 +1,25 @@
 
 # BaseDatos/bd.yml
-El archivo [bd](/BaseDatos/bd.yml) es el template que que permite crear RDS:
-Este archivo esta estructurado de la siguiente manera:
+The file [bd](/BaseDatos/bd.yml) is the template that allows create a RDS instance:
 
-* Descripcion
+The strcuture of the file is the following:
+
+* Description
 
 * Parameters
     * RefSubnetsPrivadas
-        * String separado por coma de los ids de las subneets privadas
+        * String separate by commas of the private subnets
     * RefSG
-        * Security group que solo tiene el puerto 3306 abierto.
+        * Security group that just have port 3306 open.
     * RefDefaultSG
-        * Security group default de la VPC.
+        * Security group default of the VPC.
 
-* Recursos
+* Resources
     * SubnetGroup
-        * Crea un subnet group con los ids de las subnets recibidas como parametro.
+        * Creates a subnet group with the ids of all the subnets received as parameter.
     * MyDB
-        * Crea la instancia del RDS
+        * Creates a RDS instance.
 
 * Outputs
     * EndpointBD
-        * Devuelve el endpoint de la instancia
+        * Returns the endpoint of the instance

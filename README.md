@@ -1,31 +1,32 @@
 # Trambo-CloudFormation
-Febrero 24, 2020. Create VPC using CloudFormation
+February 24, 2020. Create VPC using CloudFormation
 
-Ejercicio 5 (Cloudformation):
-Este ejercicio consistira en levantar una base de datos de MySQL en RDS y un servidor de Wordpress en una EC2.
-Los template se clasifican segun su tipo.
+Exercise 5 (Cloudformation):
+This exercise consists in configure and start a MySQL database and a wordpress server using a EC2 instance.
+The templates are classified depending their kind.
+
 1. [Network](/Network)
-    En el archivo  network.yml se creo toda la infraestructura necesaria para la VPC.
+    In the nework.yml file were created all the resources needed for the VPC.
 2. [Base de Datos](/BaseDatos)
-    En el archivo bd.yml se creo la instancia RDS y se configuro para hacer uso de la infraestructura creada en network.
+    In the bd.yml file were created the RDS instance and were configure in order to works with the VPC created.
 3. [Instancias](/Instancias)
-    En el archivo wordpress.yml se creo la instancia EC2 y se le dio las configuraciones necesarias para levantar WordPress
+    In the wordpress.yml file were created the EC2 instance and all the resources needed for the instance.
 
-El diagrama completo es el siguiente:
+The complete diagrama is the following:
 ![alt text](/Imagenes/CloudFormation1.png)
 
 # principal.yml
-El archivo [principal](/principal.yml) es el encargado de mandar a llamar a los demas templates y orquestar los parametros que cada uno necesita, funciona como una especie de puente entre los demas templates. Este archivo esta estructurado de la siguiente manera:
+The file [principal](/principal.yml) is in charge of calls all the others templates and manage the parameters and outputs, works like a bridge because can take a ouptup of a specific template and can send as input for another one. This file is structures as following:
 
-- Descripcion
+- Description
 
-    Es un string que describe para que sirve el template
-- Recursos
+    Is a string that describes the template
+- Resources
 
-    Este bloque es donde se indican que recursos se van a usar o se mandan a llamar a otros templates.
+    This block indicates which resources will be used and calls another templates.
     - NetworkStack
 
-            En este caso solamente se crea un objeto del template network porque solo una VPC necesitamos crear.
+            In this case we just create one object of the network template because we only need one VPC.
             ```
 
             NetworkStack: 
@@ -36,7 +37,7 @@ El archivo [principal](/principal.yml) es el encargado de mandar a llamar a los 
             ```
     - BDStack
 
-        En este bloque se crea un objeto de RDS se le pasa como parametro eun String de las subnets privadas separadas por coma, se envia el security group que solo tiene el puerto 3306 abierto y el security group default de la VPC.
+        This block creates a RDS object and pass as string parameter all the privates subnets, separates by a comma, and sends the security group, that just have the 3306 port open, and the VPC default security group.
 
         ```
         BDStack: 
@@ -51,7 +52,8 @@ El archivo [principal](/principal.yml) es el encargado de mandar a llamar a los 
         ```
     - WordpressStack
 
-        En este bloque se crea un objeto de tipo instancia, se le envia como parametro el id de la subnet publica 1 (donde estara corriendo), el security group con el puerto 80 y 22 abiertos, el endpoint del RDS y el security gruoup default de la VPC
+        This block creates a object of wordpress template, we send as parameter the public subnet id, where it will be executing, and the security group (which have the port 80 and  22 open), the RDS endpoint and the default security group of the VPC.
+
         ```
           WordpressStack: 
             Type: AWS::CloudFormation::Stack

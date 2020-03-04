@@ -1,19 +1,20 @@
 # Instancias/wordpress.yml
-El archivo [wordpress](/Instancias/wordpress.yml) es el template que que permite crear EC2.
-Este archivo esta estructurado de la siguiente manera:
+In the file [wordpress](/Instancias/wordpress.yml) is the template that allows create EC2 instances.
 
-* Descripcion
+The strcuture of the file is the following:
+
+* Description
 
 * Parameters
     * RefSubnetPublica
-        * String del id de la subnet publica
+        * String of the public subnet id
     * RefSG
-        * Security group que solo tiene el puerto 80 y 22 abierto.
+        * Security group that just have port 80 and 22 open.
     * RefDefaultSG
-        * Security group default de la VPC.
+        * Security group default of the VPC.
     * EndpointBD
-        * Endpoint del RDS creado
+        * Endpoint of RDS created
 
-* Recursos
+* Resources
     * MyEC2Instance
-        * Instancia EC2 creada con un user data que instala wordpress
+        * EC2 instance with wordpress installed via user data.

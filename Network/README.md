@@ -1,5 +1,5 @@
 # Network/network.yml
-El archivo [network](/Network/network.yml) es el template que que crea toda la infraestructura de la VPC.
+The file  [network](/Network/network.yml) is the template which creates all the resources needed by the VPC.
 
 # RouteTable publica
 
